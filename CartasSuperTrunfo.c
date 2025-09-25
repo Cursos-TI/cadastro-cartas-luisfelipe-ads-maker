@@ -4,8 +4,11 @@ int main(){
     char estado1[10], estado2[10];
     char codigo1[10], codigo2[10];
     char nome1[20], nome2[20];
-    int populacao1, pontos1, populacao2, pontos2;
+    int pontos1, pontos2;
+    unsigned long int populacao1, populacao2;
     float area1, pib1, area2, pib2, densidade1, densidade2, pibpc1, pibpc2;
+    float superpoder1;
+    float superpoder2;
 
     //Introdução
     printf(">>>> Jogo Super Trunfo <<<<\n");
@@ -81,6 +84,52 @@ int main(){
     printf("---------------------------------------------------\n");
     printf("Parabéns! Acima estão as suas cartas cadastradas!\n");
     printf("---------------------------------------------------\n");
+
+    //Batalha das Cartas
+    //variável super poder
+    superpoder1 = (float)populacao1 + area1 + pib1 + pibpc1 - densidade1;
+    superpoder2 = (float)populacao2 + area2 + pib2 + pibpc2 - densidade2;
+    int batalha1;
+
+    //Início da Batalha
+    printf("Para iniciar a batalha, abaixo segue o Super Poder total de cada uma das cartas!\n");
+    printf("O super poder da Carta %s é %f\n", codigo1, superpoder1);
+    printf("O super poder da Carta %s é %f\n", codigo2, superpoder2);
+    printf("------------------------------------\n");
+
+    batalha1 = superpoder1 > superpoder2;
+    
+    printf(" Na batalha inicial, disputando o poder total, se o resultado for 1, a carta 1 vence! Se o resultado for 0, a carta 2 vence!\n");
+    printf("3, 2, 1... Let's Go!\n");
+    printf("A Carta vencedora é: %d\n", batalha1);
+    printf("------------------------------------\n");
+
+    //Batalha dos atributos
+    //variáveis e calculos dos atributos
+    int batalhapop;
+    int batalhaarea;
+    int batalhapib;
+    int batalhapontos;
+    int batalhadensidade;
+    int batalhapibpc;
+    int batalhasptotal;
+
+    
+    batalhapop = populacao1 > populacao2;
+    batalhaarea = area1 > area2;
+    batalhapib = pib1 > pib2;
+    batalhapontos = pontos1 > pontos2;
+    batalhadensidade = densidade1 < densidade2;
+    batalhapibpc = pibpc1 > pibpc2;
+    batalhasptotal = superpoder1 > superpoder2;
+    
+
+    //Exibição da batalha dos atributos
+    printf("Agora vamos ao resultado da batalha de cada atributo!\nSegue o mesmo padrão, onde 1 é vitória da Carta 1 e 0 é vitória da Carta 2!\n");
+    printf("3, 2, 1... Let's Go!\n");
+    printf("População: %d\nÁrea: %d\nPIB: %d\nPontos Turísticos: %d\nDensidade Populacional: %d\nPIB per Capita: %d\n",batalhapop, batalhaarea, batalhapib, batalhapontos, batalhadensidade, batalhapibpc);
+    //printf("População: %d\nPontos turísticos: %d\n", populacao1 > populacao2, pontos1 > pontos2);
+    printf("A Carta vencedora é: %d\n", batalha1);
 
 
     return 0;
